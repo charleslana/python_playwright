@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Pytest Test",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "justMyCode": false,
+            "args": [
+                "tests/"
+            ],
+            "env": {
+                "HEADLESS": "false"
+            }
+        }
+    ]
+}

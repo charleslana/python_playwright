@@ -1,0 +1,15 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "pylint.args": [
+        "--disable=C0116",
+        "--disable=C0111",
+        "--disable=C0114"
+    ],
+    "terminal.integrated.env.linux": {
+        "HEADLESS": "false"
+    }
+}

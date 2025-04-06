@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+screenshots/
+test-results/
+venv/
+report.html

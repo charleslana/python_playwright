@@ -36,6 +36,7 @@ jobs:
           HEADLESS=true pytest tests/ --html=report.html --self-contained-html
 
       - name: Publica o report como artefato
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report

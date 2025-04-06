@@ -5,7 +5,7 @@ from config import BASE_URL
 class LoginPage:
     def __init__(self, page: Page):
         self._page = page
-        self._username_input = page.locator("#user-name")
+        self._username_input = page.locator("#user-name1")
         self._password_input = page.locator("#password")
         self._login_button = page.locator("#login-button")
         self._error_message = page.locator("[data-test='error']")

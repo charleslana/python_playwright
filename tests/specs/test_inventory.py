@@ -28,4 +28,4 @@ class TestInventory(BaseTest):
 
         self.inventory.add_multiple_products(products_to_add)
         # self.page.wait_for_timeout(3000)
-        self.inventory.assert_cart_count(len(products_to_add) + 1)
+        self.inventory.assert_cart_count(len(products_to_add))

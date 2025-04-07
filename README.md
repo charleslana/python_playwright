@@ -70,7 +70,7 @@ pytest tests/specs/test_login.py::TestLogin
 pytest tests/specs/test_login.py::TestLogin::test_login_with_invalid_credentials
 ```
 
-# Executar teste com a saída e captura de prints
+# Executar teste com a saída de logs
 
 ```bash
 pytest -s tests/

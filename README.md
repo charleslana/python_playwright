@@ -85,3 +85,60 @@ pytest -s tests/
 ```bash
 pytest -k invalid
 ```
+
+# Extensões para o VSCode
+
+- Black
+- Python
+- Pylint
+- Python Debugger
+- Pylance
+- Robot Framework Language Server
+- String Manipulation
+- Select Line Status Bar
+- Material Icon Theme
+- Git Blame
+- Dracula Theme Official
+- Brazilian Portuguese - Code Spell Checker
+- Code Spell Checker
+
+User json
+
+```bash
+{
+  "cSpell.language": "en,pt,pt_BR",
+  "editor.formatOnSave": true,
+  "explorer.compactFolders": false,
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Dracula Theme",
+  "workbench.iconTheme": "material-icon-theme"
+}
+```
+
+User keyboard json
+
+```bash
+// Coloque as suas associações de teclas neste arquivo para substituir os padrõesauto[]
+[
+    {
+        "key": "ctrl+d ctrl+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    }
+]
+```

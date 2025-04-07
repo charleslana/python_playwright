@@ -32,3 +32,6 @@ class InventoryPage:
         assert (
             actual_count == expected_count
         ), f"Esperado {expected_count} itens, mas apareceu {actual_count}."
+
+    def click_cart(self):
+        self.shopping_cart.click()

@@ -8,7 +8,8 @@
     "pylint.args": [
         "--disable=C0116",
         "--disable=C0111",
-        "--disable=C0114"
+        "--disable=C0114",
+        "--max-attributes=10"
     ],
     "terminal.integrated.env.linux": {
         "HEADLESS": "false"

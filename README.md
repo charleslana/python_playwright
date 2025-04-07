@@ -58,6 +58,10 @@ python -m pip uninstall package-aqui
 
 Ctrl+Shift+P -> Python: Configurar Testes -> pytest -> tests
 
+# Selecionar ambiente virtual do venv
+
+Ctrl+Shift+P -> Python: Selecionar Interpretador -> venv
+
 # Executar os testes pela classe
 
 ```bash

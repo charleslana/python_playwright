@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from config import BASE_URL
+from config import BASE_URL, USERNAME, PASSWORD
 
 
 class LoginPage:
@@ -20,3 +20,6 @@ class LoginPage:
 
     def get_error(self):
         return self._error_message.text_content()
+
+    def auto_login(self):
+        self.login(USERNAME, PASSWORD)

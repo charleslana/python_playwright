@@ -1,10 +1,10 @@
 """Testes relacionados ao processo de login da aplicação."""
 
 from playwright.sync_api import Page
-from .pages.login_page import LoginPage
-from .pages.inventory_page import InventoryPage
-from .utils.data_generator import get_fake_user
-from .base_test import BaseTest
+from tests.pages.login_page import LoginPage
+from ..pages.inventory_page import InventoryPage
+from ..utils.data_generator import get_fake_user
+from ..base_test import BaseTest
 
 
 class TestLogin(BaseTest):

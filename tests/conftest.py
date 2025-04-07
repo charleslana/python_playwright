@@ -1,7 +1,10 @@
 import os
+import datetime
 import pytest
 import pytest_html
 from playwright.sync_api import Page
+
+report_dir = None
 
 # from playwright.sync_api import sync_playwright
 
@@ -18,25 +21,66 @@ from playwright.sync_api import Page
 #         browser.close()
 
 
+# @pytest.hookimpl(hookwrapper=True)
+# def pytest_runtest_makereport(item, call):
+#     outcome = yield
+#     rep = outcome.get_result()
+
+#     if rep.when == "call" and rep.failed:
+
+#         page = item.funcargs.get("page", None)
+#         if page:
+#             screenshot_dir = "screenshots"
+#             file_name = f"{item.name}.png"
+#             destination = os.path.join(screenshot_dir, file_name)
+
+#             os.makedirs(screenshot_dir, exist_ok=True)
+#             page.screenshot(path=destination, full_page=True)
+
+#             if item.config.pluginmanager.hasplugin("html"):
+#                 extra = getattr(rep, "extra", [])
+#                 # extra.append(pytest_html.extras.image(destination))
+#                 extra.append(
+#                     pytest_html.extras.image(
+#                         os.path.relpath(destination, start="reports")
+#                     )
+#                 )
+#                 rep.extra = extra
+
+
+def pytest_configure(config):
+    if not config.option.collectonly:
+        global report_dir
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        report_folder = f"report_{timestamp}"
+        report_dir = os.path.join("reports", report_folder)
+        os.makedirs(report_dir, exist_ok=True)
+
+        report_file = os.path.join(report_dir, f"{report_folder}.html")
+        config.option.htmlpath = report_file
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    global report_dir
     outcome = yield
     rep = outcome.get_result()
 
     if rep.when == "call" and rep.failed:
-
         page = item.funcargs.get("page", None)
         if page:
-            screenshot_dir = "screenshots"
-            file_name = f"{item.name}.png"
-            destination = os.path.join(screenshot_dir, file_name)
+            screenshots_dir = os.path.join(report_dir, "screenshots")
+            os.makedirs(screenshots_dir, exist_ok=True)
 
-            os.makedirs(screenshot_dir, exist_ok=True)
+            file_name = f"{item.name}.png"
+            destination = os.path.join(screenshots_dir, file_name)
+
             page.screenshot(path=destination, full_page=True)
 
             if item.config.pluginmanager.hasplugin("html"):
                 extra = getattr(rep, "extra", [])
-                extra.append(pytest_html.extras.image(destination))
+                rel_path = os.path.relpath(destination, start=report_dir)
+                extra.append(pytest_html.extras.image(rel_path))
                 rep.extra = extra
 
 
